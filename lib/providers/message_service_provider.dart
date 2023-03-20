@@ -24,8 +24,8 @@ class MessageServiceProvider extends ChangeNotifier {
           "${ApiConstants.baseURL}${ApiConstants.messages}",
         ),
         body: {
-          "sender_email": senderEmail,
-          "receiver_email": receiverEmail,
+          "userOne": senderEmail,
+          "userTwo": receiverEmail,
         },
         headers: {
           "token": token

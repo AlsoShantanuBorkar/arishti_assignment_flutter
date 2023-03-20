@@ -28,8 +28,8 @@ class _AuthScreenState extends State<AuthScreen> {
                 child: CircularProgressIndicator(),
               )
             : Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TextField(
@@ -58,7 +58,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                     ElevatedButton(
                       onPressed: () async {
-                        String? fcm_token =
+                        String? fcmToken =
                             await FirebaseMessaging.instance.getToken();
                         // ignore: use_build_context_synchronously
                         await value.authenticateUser({
@@ -66,7 +66,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           "last_name": lastNameController.text,
                           "email": emailController.text,
                           "password": passwordController.text,
-                          "fcm_token": fcm_token
+                          "fcm_token": fcmToken,
                         }, widget.isLogin, context);
                       },
                       child: const Text("Submit"),
@@ -87,7 +87,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         : Container()
                   ],
                 ),
-            ),
+              ),
       ),
     );
   }

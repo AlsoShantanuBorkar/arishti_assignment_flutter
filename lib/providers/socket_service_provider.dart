@@ -44,7 +44,6 @@ class SocketServiceProvider extends ChangeNotifier {
             .addMessage(data);
       });
 
-
       socket.on("disconnect", (data) => log(data.toString()));
     } catch (e) {
       log(e.toString());
@@ -53,8 +52,9 @@ class SocketServiceProvider extends ChangeNotifier {
 
   void sendMessage(String receiverEmail, String message) {
     socket.emit("send_message", {
-      "sender_email": userData,
-      "receiver_email": receiverEmail,
+      "userOne": userData,
+      "userTwo": receiverEmail,
+      "from": userData,
       "message": message,
     });
   }

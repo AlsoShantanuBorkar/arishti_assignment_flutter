@@ -29,7 +29,7 @@ class _MessageScreenState extends State<MessageScreen> {
                   widget.chattingWith, messageController.text);
               value.addMessage(
                 {
-                  "sender_email": socketServiceProvider.userData,
+                  "userOne": socketServiceProvider.userData,
                   "message": messageController.text
                 },
               );
@@ -61,27 +61,26 @@ class _MessageScreenState extends State<MessageScreen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(value.messages[index]
-                                              ['sender_email'] !=
+                                              ['from'] ==
                                           socketServiceProvider.userData
                                       ? 0
                                       : 16),
                                   topRight: Radius.circular(
-                                      value.messages[index]['sender_email'] ==
+                                      value.messages[index]['from'] !=
                                               socketServiceProvider.userData
                                           ? 0
                                           : 16),
                                   bottomLeft: const Radius.circular(16),
                                   bottomRight: const Radius.circular(16),
                                 ),
-                                color: value.messages[index]['sender_email'] ==
+                                color: value.messages[index]['from'] ==
                                         socketServiceProvider.userData
                                     ? Colors.greenAccent
                                     : Colors.blueAccent,
                               ),
                               child: Text(
                                 value.messages[index]['message'],
-                                textAlign: value.messages[index]
-                                            ['sender_email'] ==
+                                textAlign: value.messages[index]['from'] ==
                                         widget.chattingWith
                                     ? TextAlign.left
                                     : TextAlign.right,
@@ -94,12 +93,12 @@ class _MessageScreenState extends State<MessageScreen> {
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: TextField(
-                          decoration:
-                              InputDecoration(border: OutlineInputBorder()),
+                          decoration: const InputDecoration(
+                              border: OutlineInputBorder()),
                           controller: messageController,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 50,
                       ),
                     ],
